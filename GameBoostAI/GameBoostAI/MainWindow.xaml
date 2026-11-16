@@ -1,12 +1,220 @@
-﻿<Window x:Class="GameBoostAI.MainWindow"
+<Window x:Class="GameBoostAI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameBoostAI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="GAMEBOOST AI"
+        Height="800" Width="1250"
+        MinHeight="650" MinWidth="950"
+        WindowStartupLocation="CenterScreen"
+        Background="#090D18"
+        Foreground="White">
 
+    <Window.Resources>
+        <SolidColorBrush x:Key="Panel" Color="#131B2B"/>
+        <SolidColorBrush x:Key="Accent" Color="#7657FF"/>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#F2F4FF"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#7657FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="18,12"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,8,0,12"/>
+            <Setter Property="Padding" Value="6"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" Margin="0,0,0,22">
+            <StackPanel>
+                <TextBlock Text="GAMEBOOST AI"
+                           FontSize="30"
+                           FontWeight="ExtraBold"
+                           Foreground="#9B85FF"/>
+                <TextBlock Text="YOUR PC. YOUR GAME. YOUR PERFORMANCE."
+                           FontSize="11"
+                           Foreground="#8995AE"
+                           Margin="2,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- MAIN CONTENT -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="Welcome to your gaming dashboard"
+                           FontSize="25"
+                           FontWeight="Bold"
+                           Margin="0,0,0,6"/>
+
+                <TextBlock Text="Analyze your PC and prepare your gaming profile."
+                           Foreground="#8995AE"
+                           Margin="0,0,0,22"/>
+
+                <!-- HARDWARE -->
+                <TextBlock Text="YOUR PC"
+                           FontSize="17"
+                           FontWeight="Bold"
+                           Margin="0,0,0,12"/>
+
+                <UniformGrid Columns="3" Margin="0,0,0,25">
+                    <Border Background="{StaticResource Panel}"
+                            CornerRadius="12" Padding="18" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="PROCESSORS"
+                                       Foreground="#8995AE"/>
+                            <TextBlock x:Name="CpuValue"
+                                       Text="Detecting..."
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Margin="0,10"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource Panel}"
+                            CornerRadius="12" Padding="18" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="MEMORY"
+                                       Foreground="#8995AE"/>
+                            <TextBlock x:Name="RamValue"
+                                       Text="Detecting..."
+                                       FontSize="22"
+                                       FontWeight="Bold"
+                                       Margin="0,10"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{StaticResource Panel}"
+                            CornerRadius="12" Padding="18" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="WINDOWS"
+                                       Foreground="#8995AE"/>
+                            <TextBlock x:Name="WindowsValue"
+                                       Text="Detecting..."
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Margin="0,10"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <!-- GAME CONFIGURATION -->
+                <Border Background="{StaticResource Panel}"
+                        CornerRadius="14"
+                        Padding="22"
+                        Margin="5">
+
+                    <StackPanel>
+                        <TextBlock Text="GAME CONFIGURATION"
+                                   FontSize="19"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,18"/>
+
+                        <TextBlock Text="SELECT YOUR GAME"
+                                   Foreground="#A99AFF"
+                                   FontWeight="Bold"/>
+
+                        <ComboBox x:Name="GameSelector"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Fortnite"/>
+                            <ComboBoxItem Content="Minecraft"/>
+                            <ComboBoxItem Content="Grand Theft Auto V"/>
+                            <ComboBoxItem Content="Valorant"/>
+                            <ComboBoxItem Content="Counter-Strike 2"/>
+                            <ComboBoxItem Content="Apex Legends"/>
+                            <ComboBoxItem Content="Custom Game"/>
+                        </ComboBox>
+
+                        <TextBlock Text="OPTIMIZATION MODE"
+                                   Foreground="#A99AFF"
+                                   FontWeight="Bold"/>
+
+                        <ComboBox x:Name="ModeSelector"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Maximum FPS"/>
+                            <ComboBoxItem Content="Better Graphics"/>
+                            <ComboBoxItem Content="Balanced Mode"/>
+                        </ComboBox>
+
+                        <TextBlock Text="WHERE SHOULD WE OPTIMIZE?"
+                                   Foreground="#A99AFF"
+                                   FontWeight="Bold"/>
+
+                        <ComboBox x:Name="TargetSelector"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Windows settings only"/>
+                            <ComboBoxItem Content="Game settings only"/>
+                            <ComboBoxItem Content="Both Windows and game"/>
+                        </ComboBox>
+
+                        <Button Content="ANALYZE MY PC"
+                                Click="Analyze_Click"
+                                Height="48"
+                                Margin="0,15,0,5"/>
+
+                        <Button Content="START OPTIMIZATION"
+                                Background="#242E45"
+                                Click="Optimize_Click"
+                                Height="48"/>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- RESULTS -->
+                <Border Background="{StaticResource Panel}"
+                        CornerRadius="14"
+                        Padding="22"
+                        Margin="5,20,5,10">
+
+                    <StackPanel>
+                        <TextBlock Text="AI ANALYSIS"
+                                   FontSize="19"
+                                   FontWeight="Bold"/>
+
+                        <TextBlock x:Name="StatusText"
+                                   Text="Welcome! Select a game to get started."
+                                   Foreground="#A99AFF"
+                                   FontSize="14"
+                                   TextWrapping="Wrap"
+                                   Margin="0,15,0,8"/>
+
+                        <TextBlock x:Name="DetailsText"
+                                   Text="Your analysis and recommendations will appear here."
+                                   Foreground="#B5BED0"
+                                   TextWrapping="Wrap"
+                                   FontSize="13"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- FOOTER -->
+        <TextBlock Grid.Row="2"
+                   Text="GAMEBOOST AI | PC PERFORMANCE CENTER"
+                   Foreground="#65718A"
+                   HorizontalAlignment="Center"
+                   Margin="0,15,0,0"
+                   FontSize="10"/>
     </Grid>
 </Window>
